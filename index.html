@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evaluación Preliminar de Caso | Litigium</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        litigium: {
+                            blue: '#003366', // Azul oscuro corporativo del logo
+                            light: '#4d7ea8',
+                            silver: '#8a95a5'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Merriweather', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Mejoras visuales para los inputs */
+        input[type="text"], input[type="date"], textarea {
+            transition: all 0.3s ease;
+        }
+        input[type="text"]:focus, input[type="date"]:focus, textarea:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(0, 51, 102, 0.2);
+            border-color: #003366;
+        }
+        /* Custom radio button color */
+        input[type="radio"]:checked {
+            accent-color: #003366;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 min-h-screen py-10 px-4 sm:px-6 lg:px-8">
+
+    <div class="max-w-3xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden border-t-4 border-litigium-blue">
+        
+        <!-- Cabecera / Logo -->
+        <div class="bg-slate-100 py-8 px-6 text-center border-b border-slate-200">
+            <!-- Etiqueta de imagen. En GitHub, asegúrate de subir tu logo con el nombre 'logo-litigium.png' en la misma carpeta -->
+            <img src="logo-litigium.png" alt="Litigium Logo" class="h-28 mx-auto mb-4 object-contain" id="main-logo" onerror="showFallbackLogo()">
+            
+            <!-- Logo SVG de respaldo por si la imagen no carga en la vista previa -->
+            <svg id="fallback-logo" class="h-24 w-24 mx-auto mb-4 text-litigium-blue hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                <path d="m3 19 4-4 4 4"/>
+                <path d="m13 19 4-4 4 4"/>
+                <path d="M7 15v4"/>
+                <path d="M17 15v4"/>
+                <path d="M12 2a2 2 0 0 1 2 2v0a2 2 0 0 1-2 2v0a2 2 0 0 1-2-2v0a2 2 0 0 1 2-2Z"/>
+            </svg>
+
+            <h1 class="font-serif text-3xl font-bold text-slate-900">Litigium</h1>
+            <p class="text-sm text-litigium-silver mt-2 font-medium tracking-widest uppercase">Firma Legal</p>
+        </div>
+
+        <!-- Instrucciones -->
+        <div class="px-6 py-8 sm:p-10">
+            <div class="mb-8 border-b border-slate-200 pb-6">
+                <h2 class="text-xl font-serif text-slate-900 font-bold mb-2">Evaluación Preliminar de Proyecto</h2>
+                <p class="text-slate-600 text-sm leading-relaxed">
+                    Por favor, complete el siguiente formulario con la mayor precisión posible. Esta información nos permitirá realizar un análisis inicial riguroso de su situación contractual antes de brindarle asesoramiento legal.
+                </p>
+            </div>
+
+            <!-- Formulario -->
+            <form id="litigium-form" onsubmit="procesarFormulario(event)" class="space-y-8">
+                
+                <!-- Pregunta 1 -->
+                <div>
+                    <label for="q1" class="block text-sm font-semibold text-slate-900 mb-2">
+                        1. ¿Cuáles considera usted que son los motivos que han generado la controversia con su contratante, o que podrían generarla en caso de no haberse iniciado aún ningún conflicto? <span class="text-red-600">*</span>
+                    </label>
+                    <textarea id="q1" name="q1" rows="4" required class="w-full px-4 py-3 rounded-md border border-slate-300 text-slate-900 bg-slate-50 placeholder-slate-400 focus:bg-white" placeholder="Describa los motivos detalladamente..."></textarea>
+                </div>
+
+                <!-- Pregunta 2 -->
+                <div>
+                    <label for="q2" class="block text-sm font-semibold text-slate-900 mb-2">
+                        2. ¿Cuál es el nombre exacto de la Entidad Contratante? <span class="text-red-600">*</span>
+                    </label>
+                    <input type="text" id="q2" name="q2" required class="w-full px-4 py-3 rounded-md border border-slate-300 text-slate-900 bg-slate-50 focus:bg-white" placeholder="Ej. Ministerio de Obras Públicas, Empresa X, etc.">
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Pregunta 3 -->
+                    <div>
+                        <label for="q3" class="block text-sm font-semibold text-slate-900 mb-2">
+                            3. Fecha de Suscripción del contrato <span class="text-red-600">*</span>
+                        </label>
+                        <input type="date" id="q3" name="q3" required class="w-full px-4 py-3 rounded-md border border-slate-300 text-slate-900 bg-slate-50 focus:bg-white">
+                    </div>
+
+                    <!-- Pregunta 4 -->
+                    <div>
+                        <label for="q4" class="block text-sm font-semibold text-slate-900 mb-2">
+                            4. Fecha de la Orden de Proceder <span class="text-red-600">*</span>
+                        </label>
+                        <input type="date" id="q4" name="q4" required class="w-full px-4 py-3 rounded-md border border-slate-300 text-slate-900 bg-slate-50 focus:bg-white">
+                    </div>
+                </div>
+
+                <!-- Pregunta 5 -->
+                <div>
+                    <label for="q5" class="block text-sm font-semibold text-slate-900 mb-2">
+                        5. ¿Cuál es el Plazo de Ejecución de la Obra estipulado? <span class="text-red-600">*</span>
+                    </label>
+                    <input type="text" id="q5" name="q5" required class="w-full px-4 py-3 rounded-md border border-slate-300 text-slate-900 bg-slate-50 focus:bg-white" placeholder="Ej. 180 días calendario, 12 meses, etc.">
+                </div>
+
+                <!-- Pregunta 6 -->
+                <div>
+                    <label for="q6" class="block text-sm font-semibold text-slate-900 mb-2">
+                        6. ¿Cuál es el avance actual FÍSICO y FINANCIERO de su proyecto? <span class="text-red-600">*</span>
+                    </label>
+                    <input type="text" id="q6" name="q6" required class="w-full px-4 py-3 rounded-md border border-slate-300 text-slate-900 bg-slate-50 focus:bg-white" placeholder="Ej. Físico: 45%, Financiero: 30%">
+                </div>
+
+                <!-- Pregunta 7 -->
+                <div>
+                    <label for="q7" class="block text-sm font-semibold text-slate-900 mb-2">
+                        7. ¿Cuál debería ser el avance actual según el Cronograma Técnico de Obra aprobado? <span class="text-red-600">*</span>
+                    </label>
+                    <input type="text" id="q7" name="q7" required class="w-full px-4 py-3 rounded-md border border-slate-300 text-slate-900 bg-slate-50 focus:bg-white" placeholder="Ej. Debería ser del 60%">
+                </div>
+
+                <!-- Pregunta 8 -->
+                <div class="bg-slate-50 p-4 rounded-md border border-slate-200">
+                    <label class="block text-sm font-semibold text-slate-900 mb-3">
+                        8. ¿La Entidad Contratante ha emitido llamadas de atención formal por negligencia? <span class="text-red-600">*</span>
+                    </label>
+                    <div class="flex items-center space-x-6">
+                        <label class="flex items-center cursor-pointer">
+                            <input type="radio" name="q8" value="Sí" required class="w-5 h-5 text-litigium-blue border-gray-300 focus:ring-litigium-blue">
+                            <span class="ml-2 text-slate-800 font-medium">Sí</span>
+                        </label>
+                        <label class="flex items-center cursor-pointer">
+                            <input type="radio" name="q8" value="No" required class="w-5 h-5 text-litigium-blue border-gray-300 focus:ring-litigium-blue">
+                            <span class="ml-2 text-slate-800 font-medium">No</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Botón de Envío -->
+                <div class="pt-6">
+                    <button type="submit" id="btn-submit" class="w-full flex justify-center items-center py-4 px-4 border border-transparent rounded-md shadow-sm text-lg font-medium text-white bg-litigium-blue hover:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-litigium-blue transition-colors">
+                        Enviar informacion
+                    </button>
+                    <p class="text-center text-xs text-slate-500 mt-3">
+                        Toda la información será tratada con estricta confidencialidad profesional.
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Función de respaldo por si no se encuentra la imagen del logo
+        function showFallbackLogo() {
+            document.getElementById('main-logo').style.display = 'none';
+            document.getElementById('fallback-logo').classList.remove('hidden');
+        }
+
+        // Función para recopilar los datos y enviarlos por WhatsApp
+        function procesarFormulario(event) {
+            event.preventDefault(); // Evita que la página se recargue
+
+            // Cambiar estado del botón para feedback visual
+            const btn = document.getElementById('btn-submit');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = 'Procesando...';
+            btn.disabled = true;
+
+            // Obtener valores de los campos
+            const q1 = document.getElementById('q1').value.trim();
+            const q2 = document.getElementById('q2').value.trim();
+            const q3 = formatearFecha(document.getElementById('q3').value);
+            const q4 = formatearFecha(document.getElementById('q4').value);
+            const q5 = document.getElementById('q5').value.trim();
+            const q6 = document.getElementById('q6').value.trim();
+            const q7 = document.getElementById('q7').value.trim();
+            const q8 = document.querySelector('input[name="q8"]:checked').value;
+
+            // Construir el mensaje de WhatsApp usando formato (negritas con *)
+            let mensaje = `⚖️ *EVALUACIÓN PRELIMINAR DE CASO - LITIGIUM*\n\n`;
+            
+            mensaje += `*1. Motivos de la controversia (actual o potencial):*\n${q1}\n\n`;
+            mensaje += `*2. Entidad Contratante:*\n${q2}\n\n`;
+            mensaje += `*3. Fecha de suscripción del contrato:*\n${q3}\n\n`;
+            mensaje += `*4. Fecha de la Orden de Proceder:*\n${q4}\n\n`;
+            mensaje += `*5. Plazo de ejecución de la obra:*\n${q5}\n\n`;
+            mensaje += `*6. Avance actual (Físico y Financiero):*\n${q6}\n\n`;
+            mensaje += `*7. Avance según Cronograma Técnico:*\n${q7}\n\n`;
+            mensaje += `*8. ¿La Entidad Contratante emitió llamadas de atención por negligencia?:*\n${q8}\n\n`;
+            
+            mensaje += `_Enviado desde el formulario web._`;
+
+            // Número de destino
+            const numeroDestino = "59162099539";
+            
+            // Crear el enlace de WhatsApp
+            const urlWhatsApp = `https://wa.me/${numeroDestino}?text=${encodeURIComponent(mensaje)}`;
+
+            // Redirigir en una nueva pestaña
+            window.open(urlWhatsApp, '_blank');
+
+            // Restaurar botón después de unos segundos
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+                // Opcional: limpiar el formulario
+                // document.getElementById('litigium-form').reset();
+            }, 2000);
+        }
+
+        // Función auxiliar para mostrar la fecha en formato DD/MM/YYYY
+        function formatearFecha(fechaInput) {
+            if (!fechaInput) return "No especificada";
+            const partes = fechaInput.split('-');
+            if(partes.length === 3) {
+                return `${partes[2]}/${partes[1]}/${partes[0]}`; // DD/MM/YYYY
+            }
+            return fechaInput;
+        }
+    </script>
+</body>
+</html>
