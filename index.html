@@ -35,10 +35,6 @@
             box-shadow: 0 0 0 3px rgba(0, 51, 102, 0.2);
             border-color: #003366;
         }
-        /* Custom radio button color */
-        input[type="radio"]:checked {
-            accent-color: #003366;
-        }
     </style>
 </head>
 <body class="bg-slate-50 min-h-screen py-10 px-4 sm:px-6 lg:px-8 overflow-x-hidden w-full">
@@ -79,76 +75,33 @@
                 <!-- Pregunta 1 -->
                 <div>
                     <label for="q1" class="block text-sm font-semibold text-slate-900 mb-2">
-                        1. ¿Cuáles considera usted que son los motivos que han generado la controversia con su contratante, o que podrían generarla en caso de no haberse iniciado aún ningún conflicto? <span class="text-red-600">*</span>
+                        1. ¿Cuál es el objeto del contrato y con qué entidad pública se suscribió? <span class="text-red-600">*</span>
                     </label>
-                    <textarea id="q1" name="q1" rows="4" required class="w-full px-4 py-3 rounded-md border border-slate-300 text-slate-900 bg-slate-50 placeholder-slate-400 focus:bg-white" placeholder="Describa los motivos detalladamente..."></textarea>
+                    <textarea id="q1" name="q1" rows="3" required class="w-full px-4 py-3 rounded-md border border-slate-300 text-slate-900 bg-slate-50 placeholder-slate-400 focus:bg-white" placeholder="Describa el objeto del contrato y el nombre de la entidad..."></textarea>
                 </div>
 
                 <!-- Pregunta 2 -->
                 <div>
                     <label for="q2" class="block text-sm font-semibold text-slate-900 mb-2">
-                        2. ¿Cuál es el nombre exacto de la Entidad Contratante? <span class="text-red-600">*</span>
+                        2. ¿Existe actualmente alguna notificación formal de resolución del contrato o de amenaza inminente de la ejecución de boletas o de pólizas de garantía? <span class="text-red-600">*</span>
                     </label>
-                    <input type="text" id="q2" name="q2" required class="w-full px-4 py-3 rounded-md border border-slate-300 text-slate-900 bg-slate-50 focus:bg-white" placeholder="Ej. Ministerio de Obras Públicas, Empresa X, etc.">
+                    <textarea id="q2" name="q2" rows="3" required class="w-full px-4 py-3 rounded-md border border-slate-300 text-slate-900 bg-slate-50 placeholder-slate-400 focus:bg-white" placeholder="Detalle la situación, si la hubiese (o indique 'No')..."></textarea>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <!-- Pregunta 3 -->
-                    <div>
-                        <label for="q3" class="block text-sm font-semibold text-slate-900 mb-2">
-                            3. Fecha de Suscripción del contrato <span class="text-red-600">*</span>
-                        </label>
-                        <input type="date" id="q3" name="q3" required class="w-full px-4 py-3 rounded-md border border-slate-300 text-slate-900 bg-slate-50 focus:bg-white">
-                    </div>
-
-                    <!-- Pregunta 4 -->
-                    <div>
-                        <label for="q4" class="block text-sm font-semibold text-slate-900 mb-2">
-                            4. Fecha de la Orden de Proceder <span class="text-red-600">*</span>
-                        </label>
-                        <input type="date" id="q4" name="q4" required class="w-full px-4 py-3 rounded-md border border-slate-300 text-slate-900 bg-slate-50 focus:bg-white">
-                    </div>
-                </div>
-
-                <!-- Pregunta 5 -->
+                <!-- Pregunta 3 -->
                 <div>
-                    <label for="q5" class="block text-sm font-semibold text-slate-900 mb-2">
-                        5. ¿Cuál es el Plazo de Ejecución de la Obra estipulado? <span class="text-red-600">*</span>
+                    <label for="q3" class="block text-sm font-semibold text-slate-900 mb-2">
+                        3. ¿La entidad ha incumplido obligaciones esenciales como: pago de planillas, aprobación de órdenes de cambio o corrección de errores de diseño? <span class="text-red-600">*</span>
                     </label>
-                    <input type="text" id="q5" name="q5" required class="w-full px-4 py-3 rounded-md border border-slate-300 text-slate-900 bg-slate-50 focus:bg-white" placeholder="Ej. 180 días calendario, 12 meses, etc.">
+                    <textarea id="q3" name="q3" rows="3" required class="w-full px-4 py-3 rounded-md border border-slate-300 text-slate-900 bg-slate-50 placeholder-slate-400 focus:bg-white" placeholder="Especifique los incumplimientos por parte de la entidad..."></textarea>
                 </div>
 
-                <!-- Pregunta 6 -->
+                <!-- Pregunta 4 -->
                 <div>
-                    <label for="q6" class="block text-sm font-semibold text-slate-900 mb-2">
-                        6. ¿Cuál es el avance actual FÍSICO y FINANCIERO de su proyecto? <span class="text-red-600">*</span>
+                    <label for="q4" class="block text-sm font-semibold text-slate-900 mb-2">
+                        4. ¿Qué acciones o reclamos formales ha interpuesto su empresa hasta la fecha (libro de órdenes, notas, cartas, etc.)? <span class="text-red-600">*</span>
                     </label>
-                    <input type="text" id="q6" name="q6" required class="w-full px-4 py-3 rounded-md border border-slate-300 text-slate-900 bg-slate-50 focus:bg-white" placeholder="Ej. Físico: 45%, Financiero: 30%">
-                </div>
-
-                <!-- Pregunta 7 -->
-                <div>
-                    <label for="q7" class="block text-sm font-semibold text-slate-900 mb-2">
-                        7. ¿Cuál debería ser el avance actual según el Cronograma Técnico de Obra aprobado? <span class="text-red-600">*</span>
-                    </label>
-                    <input type="text" id="q7" name="q7" required class="w-full px-4 py-3 rounded-md border border-slate-300 text-slate-900 bg-slate-50 focus:bg-white" placeholder="Ej. Debería ser del 60%">
-                </div>
-
-                <!-- Pregunta 8 -->
-                <div class="bg-slate-50 p-4 rounded-md border border-slate-200">
-                    <label class="block text-sm font-semibold text-slate-900 mb-3">
-                        8. ¿La Entidad Contratante ha emitido llamadas de atención formal por negligencia? <span class="text-red-600">*</span>
-                    </label>
-                    <div class="flex items-center space-x-6">
-                        <label class="flex items-center cursor-pointer">
-                            <input type="radio" name="q8" value="Sí" required class="w-5 h-5 text-litigium-blue border-gray-300 focus:ring-litigium-blue">
-                            <span class="ml-2 text-slate-800 font-medium">Sí</span>
-                        </label>
-                        <label class="flex items-center cursor-pointer">
-                            <input type="radio" name="q8" value="No" required class="w-5 h-5 text-litigium-blue border-gray-300 focus:ring-litigium-blue">
-                            <span class="ml-2 text-slate-800 font-medium">No</span>
-                        </label>
-                    </div>
+                    <textarea id="q4" name="q4" rows="3" required class="w-full px-4 py-3 rounded-md border border-slate-300 text-slate-900 bg-slate-50 placeholder-slate-400 focus:bg-white" placeholder="Enumere las acciones y documentos presentados..."></textarea>
                 </div>
 
                 <!-- Botón de Envío -->
@@ -184,24 +137,16 @@
             // Obtener valores de los campos
             const q1 = document.getElementById('q1').value.trim();
             const q2 = document.getElementById('q2').value.trim();
-            const q3 = formatearFecha(document.getElementById('q3').value);
-            const q4 = formatearFecha(document.getElementById('q4').value);
-            const q5 = document.getElementById('q5').value.trim();
-            const q6 = document.getElementById('q6').value.trim();
-            const q7 = document.getElementById('q7').value.trim();
-            const q8 = document.querySelector('input[name="q8"]:checked').value;
+            const q3 = document.getElementById('q3').value.trim();
+            const q4 = document.getElementById('q4').value.trim();
 
             // Construir el mensaje de WhatsApp usando formato (negritas con *)
             let mensaje = `⚖️ *EVALUACIÓN PRELIMINAR DE CASO - LITIGIUM*\n\n`;
             
-            mensaje += `*1. Motivos de la controversia (actual o potencial):*\n${q1}\n\n`;
-            mensaje += `*2. Entidad Contratante:*\n${q2}\n\n`;
-            mensaje += `*3. Fecha de suscripción del contrato:*\n${q3}\n\n`;
-            mensaje += `*4. Fecha de la Orden de Proceder:*\n${q4}\n\n`;
-            mensaje += `*5. Plazo de ejecución de la obra:*\n${q5}\n\n`;
-            mensaje += `*6. Avance actual (Físico y Financiero):*\n${q6}\n\n`;
-            mensaje += `*7. Avance según Cronograma Técnico:*\n${q7}\n\n`;
-            mensaje += `*8. ¿La Entidad Contratante emitió llamadas de atención por negligencia?:*\n${q8}\n\n`;
+            mensaje += `*1. Objeto del contrato y entidad pública:*\n${q1}\n\n`;
+            mensaje += `*2. Notificaciones de resolución o ejecución de garantías:*\n${q2}\n\n`;
+            mensaje += `*3. Incumplimientos de obligaciones por parte de la entidad:*\n${q3}\n\n`;
+            mensaje += `*4. Acciones o reclamos formales interpuestos:*\n${q4}\n\n`;
             
             mensaje += `_Enviado desde el formulario web._`;
 
@@ -218,19 +163,7 @@
             setTimeout(() => {
                 btn.innerHTML = originalText;
                 btn.disabled = false;
-                // Opcional: limpiar el formulario
-                // document.getElementById('litigium-form').reset();
             }, 2000);
-        }
-
-        // Función auxiliar para mostrar la fecha en formato DD/MM/YYYY
-        function formatearFecha(fechaInput) {
-            if (!fechaInput) return "No especificada";
-            const partes = fechaInput.split('-');
-            if(partes.length === 3) {
-                return `${partes[2]}/${partes[1]}/${partes[0]}`; // DD/MM/YYYY
-            }
-            return fechaInput;
         }
     </script>
 </body>
